@@ -1,9 +1,11 @@
 /**
  * Created by Justus on 01.03.2017.
  */
-public class Line extends Point {
+class Line extends Point {
 
-    protected double dX, dY, dZ;
+    private double dX;
+    private double dY;
+    private double dZ;
 
     public Line() {
         super();

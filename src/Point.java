@@ -1,20 +1,20 @@
-import java.io.FileNotFoundException;
-import java.util.Formatter;
 import java.util.Scanner;
 
 /**
  * Created by Justus on 01.03.2017.
  */
-public class Point {
+class Point {
     Scanner sc = new Scanner(System.in);
-    protected double pX, pY, pZ;
-    protected String name;
+    private double pX;
+    private double pY;
+    private double pZ;
+    String name;
 
     public Point() {
         setOrigin();
     }
 
-    public Point(double pX, double pY, double pZ, String name) {
+    Point(double pX, double pY, double pZ, String name) {
         this.pX = pX;
         this.pY = pY;
         this.pZ = pZ;

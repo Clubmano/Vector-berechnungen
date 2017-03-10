@@ -1,14 +1,13 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * Created by Justus on 01.03.2017.
  */
-public class Input {
+class Input {
 
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
     boolean inputFinished = false;
-    Main main;
+    private Main main;
 
     public Input(Main main) {
         this.main = main;

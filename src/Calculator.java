@@ -4,10 +4,10 @@ import java.util.Scanner;
 /**
  * Created by Justus on 01.03.2017.
  */
-public class Calculator {
-    Scanner sc = new Scanner(System.in);
-    Main main;
-    ArrayList<Integer> index = new ArrayList<>();
+class Calculator {
+    private final Scanner sc = new Scanner(System.in);
+    private final Main main;
+    private final ArrayList<Integer> index = new ArrayList<>();
 
     public Calculator(Main main) {
         this.main = main;
@@ -39,12 +39,12 @@ public class Calculator {
 
     }
 
-    public void pointsOnALine(ArrayList<Integer> points) {
+    private void pointsOnALine(ArrayList<Integer> points) {
 
 
     }
 
-    public void showRelations(ArrayList<Integer> points) {
+    private void showRelations(ArrayList<Integer> points) {
 
         System.out.println("\nDistance: " + calcDistance(points));
 
@@ -64,7 +64,7 @@ public class Calculator {
 
     }
 
-    public double calcDistance(ArrayList<Integer> points) {
+    private double calcDistance(ArrayList<Integer> points) {
         double distance = 0;
         distance = Math.sqrt(Math.pow((main.points.get(points.get(0)).getpX() - (main.points.get(points.get(1)).getpX())), 2) + Math.pow((main.points.get(points.get(0)).getpY() -
                 (main.points.get(points.get(1)).getpY())), 2) + Math.pow((main.points.get(points.get(0)).getpZ() - (main.points.get(points.get(1)).getpZ())), 2));

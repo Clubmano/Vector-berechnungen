@@ -6,12 +6,12 @@ import java.util.Scanner;
 /**
  * Created by Justus on 01.03.2017.
  */
-public class Main {
+class Main {
     ArrayList<Point> points = new ArrayList<>();
-    Scanner sc = new Scanner(System.in);
-    Scanner fileReader;
-    Input inputHandler;
-    Calculator calcHandler;
+    private Scanner sc = new Scanner(System.in);
+    private Scanner fileReader;
+    private Input inputHandler;
+    private Calculator calcHandler;
     private Formatter file;
 
     public Main() {
@@ -27,7 +27,7 @@ public class Main {
         }
     }
 
-    public void deletePoint() {
+    private void deletePoint() {
         System.out.println("Which Point would you like to delete?");
         listPoints(true);
         points.remove(sc.nextInt());
