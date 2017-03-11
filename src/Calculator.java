@@ -21,7 +21,7 @@ class Calculator {
         switch (sc.nextInt()) {
             case 1:
                 pointSelection(2);
-                calcDistance(index);
+                System.out.println("\nThe Distance is: " + calcDistance(index)+"\n");
                 index.clear();
                 break;
             case 2:

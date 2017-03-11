@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Formatter;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -67,6 +68,8 @@ class Main {
                     Double.parseDouble(fileReader.next()),Double.parseDouble(fileReader.next()),fileReader.next()));
             i++;
         }
+        System.out.println("\nThese objects have been loaded.");
+        listPoints(false);
     }
 
     private void writeDataIntoFile() {
@@ -79,7 +82,7 @@ class Main {
             String pX = Double.toString(points.get(i).getpX());
             String pY = Double.toString(points.get(i).getpY());
             String pZ = Double.toString(points.get(i).getpZ());
-            file.format("%s%s%s%s%s%s%s%s", pX, " ", pY, " ", pZ, " ", points.get(i).getName(), " ");
+            file.format("%s%s%s%s%s%s%s%s", pX, " ", pY, " ", pZ, " ", points.get(i).getName(), "\n");
         }
         file.close();
         System.out.println("Objects have been saved.");
