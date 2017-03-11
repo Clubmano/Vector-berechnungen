@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Formatter;
-import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -12,7 +11,7 @@ class Main {
     ArrayList<Point> points = new ArrayList<>();
     private Scanner sc = new Scanner(System.in);
     private Scanner fileReader;
-    private File afile = new File("C:\\Users\\Justus\\Vector berechnungen\\Objects.txt");
+    private File objectsFilePath = new File("C:\\Users\\Justus\\Vector berechnungen\\Objects.txt");
     private Input inputHandler;
     private Calculator calcHandler;
     private Formatter file;
@@ -58,7 +57,7 @@ class Main {
     private void readDataFromFile() {
         points.clear();
         try {
-            fileReader = new Scanner(afile);
+            fileReader = new Scanner(objectsFilePath);
         } catch (Exception e) {
             System.out.println("File does not exist.");
         }
