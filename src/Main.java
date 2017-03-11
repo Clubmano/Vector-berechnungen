@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Formatter;
@@ -10,6 +11,7 @@ class Main {
     ArrayList<Point> points = new ArrayList<>();
     private Scanner sc = new Scanner(System.in);
     private Scanner fileReader;
+    private File afile = new File("C:\\Users\\Justus\\Vector berechnungen\\Objects.txt");
     private Input inputHandler;
     private Calculator calcHandler;
     private Formatter file;
@@ -53,19 +55,15 @@ class Main {
     }
 
     private void readDataFromFile() {
-        points.clear();
         try {
-            fileReader = new Scanner("Objects.txt");
+            fileReader = new Scanner(afile);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("File does not exist.");
         }
         while (fileReader.hasNext()) {
             for (int i = 0; i < points.size(); i++) {
-                points.get(i).setName(fileReader.nextLine());
-                System.out.println(points.get(i).getName());
-                points.get(i).setpX(fileReader.nextDouble());
-                points.get(i).setpY(fileReader.nextDouble());
-                points.get(i).setpZ(fileReader.nextDouble());
+                points.add(new Point(Double.parseDouble(fileReader.next()),
+                        Double.parseDouble(fileReader.next()), Double.parseDouble(fileReader.next()), fileReader.next()));
             }
         }
     }
@@ -80,7 +78,7 @@ class Main {
             String pX = Double.toString(points.get(i).getpX());
             String pY = Double.toString(points.get(i).getpY());
             String pZ = Double.toString(points.get(i).getpZ());
-            file.format("%s%s%s%s%s%s%s%s", points.get(i).getName(), " ", pX, " ", pY, " ", pZ, "\n");
+            file.format("%s%s%s%s%s%s%s%s",pX, " ", pY, " ", pZ, " ", points.get(i).getName()," ");
         }
         file.close();
         System.out.println("Objects have been saved.");
