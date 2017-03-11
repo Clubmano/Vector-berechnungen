@@ -63,11 +63,8 @@ class Main {
         }
         int i = 0;
         while (fileReader.hasNext()) {
-            double pX = Double.parseDouble(fileReader.next());
-            double pY = Double.parseDouble(fileReader.next());
-            double pZ = Double.parseDouble(fileReader.next());
-            String name = fileReader.next();
-            points.add(i, new Point(pX,pY,pZ,name));
+            points.add(i, new Point(Double.parseDouble(fileReader.next()),
+                    Double.parseDouble(fileReader.next()),Double.parseDouble(fileReader.next()),fileReader.next()));
             i++;
         }
     }
