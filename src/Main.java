@@ -55,16 +55,20 @@ class Main {
     }
 
     private void readDataFromFile() {
+        points.clear();
         try {
             fileReader = new Scanner(afile);
         } catch (Exception e) {
             System.out.println("File does not exist.");
         }
+        int i = 0;
         while (fileReader.hasNext()) {
-            for (int i = 0; i < points.size(); i++) {
-                points.add(new Point(Double.parseDouble(fileReader.next()),
-                        Double.parseDouble(fileReader.next()), Double.parseDouble(fileReader.next()), fileReader.next()));
-            }
+            double pX = Double.parseDouble(fileReader.next());
+            double pY = Double.parseDouble(fileReader.next());
+            double pZ = Double.parseDouble(fileReader.next());
+            String name = fileReader.next();
+            points.add(i, new Point(pX,pY,pZ,name));
+            i++;
         }
     }
 
@@ -78,7 +82,7 @@ class Main {
             String pX = Double.toString(points.get(i).getpX());
             String pY = Double.toString(points.get(i).getpY());
             String pZ = Double.toString(points.get(i).getpZ());
-            file.format("%s%s%s%s%s%s%s%s",pX, " ", pY, " ", pZ, " ", points.get(i).getName()," ");
+            file.format("%s%s%s%s%s%s%s%s", pX, " ", pY, " ", pZ, " ", points.get(i).getName(), " ");
         }
         file.close();
         System.out.println("Objects have been saved.");
