@@ -12,6 +12,7 @@ class Main {
     private Scanner sc = new Scanner(System.in);
     private Scanner fileReader;
     private File objectsFilePath = new File("C:\\Users\\Justus\\Vector berechnungen\\Objects.txt");
+    private File autoSaveFilePath = new File("C:\\Users\\Justus\\Vector berechnungen\\Autosave.txt");
     private Input inputHandler;
     private Calculator calcHandler;
     private Formatter file;
@@ -19,6 +20,7 @@ class Main {
     public Main() {
         inputHandler = new Input(this);
         calcHandler = new Calculator(this);
+        readDataFromFile(autoSaveFilePath, false);
         start();
     }
 
@@ -54,10 +56,10 @@ class Main {
         return points;
     }
 
-    private void readDataFromFile() {
+    private void readDataFromFile(File mfile, boolean showText) {
         points.clear();
         try {
-            fileReader = new Scanner(objectsFilePath);
+            fileReader = new Scanner(mfile);
         } catch (Exception e) {
             System.out.println("File does not exist.");
         }
@@ -67,13 +69,15 @@ class Main {
                     Double.parseDouble(fileReader.next()),Double.parseDouble(fileReader.next()),fileReader.next()));
             i++;
         }
-        System.out.println("\nThese objects have been loaded.");
-        listPoints(false);
+        if (showText) {
+            System.out.println("\nThese objects have been loaded.");
+            listPoints(false);
+        }
     }
 
-    private void writeDataIntoFile() {
+    private void writeDataIntoFile(File mfile) {
         try {
-            file = new Formatter("Objects.txt");
+            file = new Formatter(mfile);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -112,12 +116,13 @@ class Main {
                 calcHandler.calcMenu();
                 break;
             case 5:
-                readDataFromFile();
+                readDataFromFile(objectsFilePath, true);
                 break;
             case 6:
-                writeDataIntoFile();
+                writeDataIntoFile(objectsFilePath);
                 break;
             case 7:
+                writeDataIntoFile(autoSaveFilePath);
                 System.exit(0);
                 break;
 
