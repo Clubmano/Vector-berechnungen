@@ -1,16 +1,18 @@
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Formatter;
 import java.util.Scanner;
 
 /**
  * Created by Justus on 01.03.2017.
  */
-class Input {
+class Data {
 
     private Scanner sc = new Scanner(System.in);
     boolean inputFinished = false;
     private Main main;
 
-    public Input(Main main) {
+    public Data(Main main) {
         this.main = main;
     }
 
@@ -49,6 +51,22 @@ class Input {
             System.out.println("\nThese objects have been loaded.");
             main.listPoints(false);
         }
+    }
+    public void writeDataIntoFile(File mfile) {
+        try {
+            main.file = new Formatter(mfile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        for (int i = 0; i < main.points.size(); i++) {
+            String pX = Double.toString(main.points.get(i).getpX());
+            String pY = Double.toString(main.points.get(i).getpY());
+            String pZ = Double.toString(main.points.get(i).getpZ());
+            main.file.format("%s%s%s%s%s%s%s%s", pX, " ", pY, " ", pZ, " ", main.points.get(i).getName(), "\n");
+        }
+        main.file.close();
+        System.out.println("Objects have been saved.");
+
     }
 
 }

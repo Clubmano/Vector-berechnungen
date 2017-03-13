@@ -13,14 +13,14 @@ class Main {
     public Scanner fileReader;
     private File objectsFilePath = new File("C:\\Users\\Justus\\Vector berechnungen\\Objects.txt");
     private File autoSaveFilePath = new File("C:\\Users\\Justus\\Vector berechnungen\\Autosave.txt");
-    private Input inputHandler;
+    private Data dataHandler;
     private Calculator calcHandler;
-    private Formatter file;
+    public Formatter file;
 
     public Main() {
-        inputHandler = new Input(this);
+        dataHandler = new Data(this);
         calcHandler = new Calculator(this);
-        inputHandler.readDataFromFile(autoSaveFilePath, false);
+        dataHandler.readDataFromFile(autoSaveFilePath, false);
         start();
     }
 
@@ -56,27 +56,8 @@ class Main {
         return points;
     }
 
-
-
-    private void writeDataIntoFile(File mfile) {
-        try {
-            file = new Formatter(mfile);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        for (int i = 0; i < points.size(); i++) {
-            String pX = Double.toString(points.get(i).getpX());
-            String pY = Double.toString(points.get(i).getpY());
-            String pZ = Double.toString(points.get(i).getpZ());
-            file.format("%s%s%s%s%s%s%s%s", pX, " ", pY, " ", pZ, " ", points.get(i).getName(), "\n");
-        }
-        file.close();
-        System.out.println("Objects have been saved.");
-
-    }
-
     private void printMenu() {
-        System.out.println("[1] Input Something");
+        System.out.println("[1] Data Something");
         System.out.println("[2] List everything");
         System.out.println("[3] Delete");
         System.out.println("[4] Calculations");
@@ -86,7 +67,7 @@ class Main {
 
         switch (sc.nextInt()) {
             case 1:
-                inputHandler.inputData();
+                dataHandler.inputData();
                 break;
             case 2:
                 listPoints(false);
@@ -99,13 +80,13 @@ class Main {
                 calcHandler.calcMenu();
                 break;
             case 5:
-                inputHandler.readDataFromFile(objectsFilePath, true);
+                dataHandler.readDataFromFile(objectsFilePath, true);
                 break;
             case 6:
-                writeDataIntoFile(objectsFilePath);
+                dataHandler.writeDataIntoFile(objectsFilePath);
                 break;
             case 7:
-                writeDataIntoFile(autoSaveFilePath);
+                dataHandler.writeDataIntoFile(autoSaveFilePath);
                 System.exit(0);
                 break;
 
