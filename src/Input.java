@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Scanner;
 
 /**
@@ -30,6 +31,24 @@ class Input {
                 break;
         }
 
+    }
+    public void readDataFromFile(File mfile, boolean showText) {
+        main.points.clear();
+        try {
+            main.fileReader = new Scanner(mfile);
+        } catch (Exception e) {
+            System.out.println("File does not exist.");
+        }
+        int i = 0;
+        while (main.fileReader.hasNext()) {
+            main.points.add(i, new Point(Double.parseDouble(main.fileReader.next()),
+                    Double.parseDouble(main.fileReader.next()),Double.parseDouble(main.fileReader.next()),main.fileReader.next()));
+            i++;
+        }
+        if (showText) {
+            System.out.println("\nThese objects have been loaded.");
+            main.listPoints(false);
+        }
     }
 
 }

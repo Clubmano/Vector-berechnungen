@@ -10,7 +10,7 @@ import java.util.Scanner;
 class Main {
     ArrayList<Point> points = new ArrayList<>();
     private Scanner sc = new Scanner(System.in);
-    private Scanner fileReader;
+    public Scanner fileReader;
     private File objectsFilePath = new File("C:\\Users\\Justus\\Vector berechnungen\\Objects.txt");
     private File autoSaveFilePath = new File("C:\\Users\\Justus\\Vector berechnungen\\Autosave.txt");
     private Input inputHandler;
@@ -20,7 +20,7 @@ class Main {
     public Main() {
         inputHandler = new Input(this);
         calcHandler = new Calculator(this);
-        readDataFromFile(autoSaveFilePath, false);
+        inputHandler.readDataFromFile(autoSaveFilePath, false);
         start();
     }
 
@@ -56,24 +56,7 @@ class Main {
         return points;
     }
 
-    private void readDataFromFile(File mfile, boolean showText) {
-        points.clear();
-        try {
-            fileReader = new Scanner(mfile);
-        } catch (Exception e) {
-            System.out.println("File does not exist.");
-        }
-        int i = 0;
-        while (fileReader.hasNext()) {
-            points.add(i, new Point(Double.parseDouble(fileReader.next()),
-                    Double.parseDouble(fileReader.next()),Double.parseDouble(fileReader.next()),fileReader.next()));
-            i++;
-        }
-        if (showText) {
-            System.out.println("\nThese objects have been loaded.");
-            listPoints(false);
-        }
-    }
+
 
     private void writeDataIntoFile(File mfile) {
         try {
@@ -116,7 +99,7 @@ class Main {
                 calcHandler.calcMenu();
                 break;
             case 5:
-                readDataFromFile(objectsFilePath, true);
+                inputHandler.readDataFromFile(objectsFilePath, true);
                 break;
             case 6:
                 writeDataIntoFile(objectsFilePath);
