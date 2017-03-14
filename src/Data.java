@@ -10,10 +10,10 @@ class Data {
 
     private Scanner sc = new Scanner(System.in);
     boolean inputFinished = false;
-    private Main main;
+    private basic basic;
 
-    public Data(Main main) {
-        this.main = main;
+    public Data(basic basic) {
+        this.basic = basic;
     }
 
     public void inputData() {
@@ -23,7 +23,7 @@ class Data {
         System.out.println("[3] Plane");
         switch (sc.nextInt()) {
             case 1:
-                main.getPoints().add(new Point());
+                basic.getPoints().add(new Point());
                 break;
             case 2:
 
@@ -35,36 +35,36 @@ class Data {
 
     }
     public void readDataFromFile(File mfile, boolean showText) {
-        main.points.clear();
+        basic.points.clear();
         try {
-            main.fileReader = new Scanner(mfile);
+            basic.fileReader = new Scanner(mfile);
         } catch (Exception e) {
             System.out.println("File does not exist.");
         }
         int i = 0;
-        while (main.fileReader.hasNext()) {
-            main.points.add(i, new Point(Double.parseDouble(main.fileReader.next()),
-                    Double.parseDouble(main.fileReader.next()),Double.parseDouble(main.fileReader.next()),main.fileReader.next()));
+        while (basic.fileReader.hasNext()) {
+            basic.points.add(i, new Point(Double.parseDouble(basic.fileReader.next()),
+                    Double.parseDouble(basic.fileReader.next()),Double.parseDouble(basic.fileReader.next()), basic.fileReader.next()));
             i++;
         }
         if (showText) {
             System.out.println("\nThese objects have been loaded.");
-            main.listPoints(false);
+            basic.listPoints(false);
         }
     }
     public void writeDataIntoFile(File mfile) {
         try {
-            main.file = new Formatter(mfile);
+            basic.file = new Formatter(mfile);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        for (int i = 0; i < main.points.size(); i++) {
-            String pX = Double.toString(main.points.get(i).getpX());
-            String pY = Double.toString(main.points.get(i).getpY());
-            String pZ = Double.toString(main.points.get(i).getpZ());
-            main.file.format("%s%s%s%s%s%s%s%s", pX, " ", pY, " ", pZ, " ", main.points.get(i).getName(), "\n");
+        for (int i = 0; i < basic.points.size(); i++) {
+            String pX = Double.toString(basic.points.get(i).getpX());
+            String pY = Double.toString(basic.points.get(i).getpY());
+            String pZ = Double.toString(basic.points.get(i).getpZ());
+            basic.file.format("%s%s%s%s%s%s%s%s", pX, " ", pY, " ", pZ, " ", basic.points.get(i).getName(), "\n");
         }
-        main.file.close();
+        basic.file.close();
         System.out.println("Objects have been saved.");
 
     }

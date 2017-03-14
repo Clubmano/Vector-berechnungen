@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * Created by Justus on 01.03.2017.
  */
-class Main {
+class basic {
     ArrayList<Point> points = new ArrayList<>();
     private Scanner sc = new Scanner(System.in);
     public Scanner fileReader;
@@ -17,7 +17,7 @@ class Main {
     private Calculator calcHandler;
     public Formatter file;
 
-    public Main() {
+    public basic() {
         dataHandler = new Data(this);
         calcHandler = new Calculator(this);
         dataHandler.readDataFromFile(autoSaveFilePath, false);
