@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Scanner;
+        import java.util.Scanner;
 
 /**
  * Created by Justus on 01.03.2017.
@@ -21,8 +21,8 @@ class Calculator {
         System.out.println("[3] Check if Points are on one line.");
         switch (sc.nextInt()) {
             case 1:
-                pointSelection(2,2);
-                System.out.println("\nThe Distance is: " + calcDistance(index)+"\n");
+                pointSelection(2, 2);
+                System.out.println("\nThe Distance is: " + calcDistance(index) + "\n");
                 index.clear();
                 break;
             case 2:
@@ -45,29 +45,29 @@ class Calculator {
         boolean onALine = true;
         //Checking for a difference in X gradient.
         int originRelativeGradientX = (int) ((main.points.get(points.get(0)).getpX() - main.points.get(points.get(1)).getpX())
-                / (main.points.get(points.get(0)).getpY() -main.points.get(points.get(1)).getpY()));
-        for (int i = 1; i < points.size()-1; i++) {
-            int comparisonRelativeGradientX = (int) ((main.points.get(points.get(i)).getpX() - main.points.get(points.get(i+1)).getpX())
-                    / (main.points.get(points.get(i)).getpY() -main.points.get(points.get(i+1)).getpY()));
+                / (main.points.get(points.get(0)).getpY() - main.points.get(points.get(1)).getpY()));
+        for (int i = 1; i < points.size() - 1; i++) {
+            int comparisonRelativeGradientX = (int) ((main.points.get(points.get(i)).getpX() - main.points.get(points.get(i + 1)).getpX())
+                    / (main.points.get(points.get(i)).getpY() - main.points.get(points.get(i + 1)).getpY()));
             System.out.println(originRelativeGradientX);
             System.out.println(comparisonRelativeGradientX);
 
-            if (comparisonRelativeGradientX != originRelativeGradientX){
+            if (comparisonRelativeGradientX != originRelativeGradientX) {
                 onALine = false;
                 break;
-            }else {
+            } else {
 
             }
         }
         //Checking for a difference in Y gradient.
         int originRelativeGradientY = (int) ((main.points.get(points.get(0)).getpY() - main.points.get(points.get(1)).getpY())
-                / (main.points.get(points.get(0)).getpZ() -main.points.get(points.get(1)).getpZ()));
-        for (int i = 1; i < points.size()-1; i++) {
-            int comparisonRelativeGradientY = (int) ((main.points.get(points.get(i)).getpY() - main.points.get(points.get(i+1)).getpY())
-                    / (main.points.get(points.get(i)).getpZ() -main.points.get(points.get(i+1)).getpZ()));
+                / (main.points.get(points.get(0)).getpZ() - main.points.get(points.get(1)).getpZ()));
+        for (int i = 1; i < points.size() - 1; i++) {
+            int comparisonRelativeGradientY = (int) ((main.points.get(points.get(i)).getpY() - main.points.get(points.get(i + 1)).getpY())
+                    / (main.points.get(points.get(i)).getpZ() - main.points.get(points.get(i + 1)).getpZ()));
             System.out.println(originRelativeGradientY);
             System.out.println(comparisonRelativeGradientY);
-            if (comparisonRelativeGradientY != originRelativeGradientY){
+            if (comparisonRelativeGradientY != originRelativeGradientY) {
                 onALine = false;
                 break;
             }
@@ -100,10 +100,12 @@ class Calculator {
         return index;
 
     }
+
     //Method to calculate the distance between two points. It is done by the simple formal sqrt(Δx²+Δy²+Δz²).
     private double calcDistance(ArrayList<Integer> points) {
-       double distance = Math.sqrt(Math.pow((main.points.get(points.get(0)).getpX() - (main.points.get(points.get(1)).getpX())), 2) + Math.pow((main.points.get(points.get(0)).getpY() -
-                (main.points.get(points.get(1)).getpY())), 2) + Math.pow((main.points.get(points.get(0)).getpZ() - (main.points.get(points.get(1)).getpZ())), 2));
+        double distance = Math.sqrt(Math.pow((main.points.get(points.get(0)).getpX() - (main.points.get(points.get(1)).getpX())), 2)
+                + Math.pow((main.points.get(points.get(0)).getpY() - (main.points.get(points.get(1)).getpY())), 2)
+                + Math.pow((main.points.get(points.get(0)).getpZ() - (main.points.get(points.get(1)).getpZ())), 2));
 
         return distance;
     }
