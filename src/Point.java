@@ -33,38 +33,13 @@ class Point {
         pZ = sc.nextFloat();
     }
 
-    public Scanner getSc() {
-        return sc;
-    }
-
-    public void setSc(Scanner sc) {
-        this.sc = sc;
-    }
-
-    public void setpX(double pX) {
-        this.pX = pX;
-    }
-
-    public void setpY(double pY) {
-        this.pY = pY;
-    }
-
-    public void setpZ(double pZ) {
-        this.pZ = pZ;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public double getpX() {
         return pX;
     }
-
 
     public double getpY() {
         return pY;
