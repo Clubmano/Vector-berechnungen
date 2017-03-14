@@ -31,11 +31,14 @@ class Main {
         }
     }
 
-    private void deletePoint() {
+    private void deleteAPoint() {
         System.out.println("Which Point would you like to delete?");
         listPoints(true);
         points.remove(sc.nextInt());
         System.out.println();
+    }
+    private void deleteAllPoints() {
+        points.clear();
     }
 
     public void listPoints(boolean showIndex) {
@@ -51,7 +54,19 @@ class Main {
         }
         System.out.println("\n");
     }
+    private void deleteMenu() {
+        System.out.println("\n[1] Delete one point.");
+        System.out.println("\n[2] Delete all points.");
+        switch (sc.nextInt()){
+            case 1:
+                deleteAPoint();
+                break;
+            case 2:
+                deleteAllPoints();
+                break;
+        }
 
+    }
     public ArrayList<Point> getPoints() {
         return points;
     }
@@ -74,7 +89,7 @@ class Main {
                 break;
 
             case 3:
-                deletePoint();
+                deleteMenu();
                 break;
             case 4:
                 calcHandler.calcMenu();
@@ -93,4 +108,6 @@ class Main {
 
         }
     }
+
+
 }
