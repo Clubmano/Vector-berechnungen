@@ -10,7 +10,6 @@ class basic {
     ArrayList<Point> points = new ArrayList<>();
     private Scanner sc = new Scanner(System.in);
     public Scanner fileReader;
-    private File objectsFilePath = new File("C:\\Users\\Justus\\Vector berechnungen\\Object Files\\Objects.txt");
     private File autoSaveFilePath = new File("C:\\Users\\Justus\\Vector berechnungen\\Object Files\\Autosave.txt");
     private Data dataHandler;
     private Calculator calcHandler;
@@ -48,7 +47,7 @@ class basic {
     public void listPoints(boolean showIndex) {
         System.out.println("");
         for (int i = 0; i < points.size(); i++) {
-            if (showIndex == true) {
+            if (showIndex) {
                 System.out.println("[" + i + "]" + "Point " + points.get(i).name + " (" +
                         points.get(i).getpX() + "|" + points.get(i).getpY() + "|" + points.get(i).getpZ() + ")");
             } else {
