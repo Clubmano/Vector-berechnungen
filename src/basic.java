@@ -11,8 +11,8 @@ class basic {
     ArrayList<Point> points = new ArrayList<>();
     private Scanner sc = new Scanner(System.in);
     public Scanner fileReader;
-    private File objectsFilePath = new File("C:\\Users\\Justus\\Vector berechnungen\\Objects.txt");
-    private File autoSaveFilePath = new File("C:\\Users\\Justus\\Vector berechnungen\\Autosave.txt");
+    private File objectsFilePath = new File("C:\\Users\\Justus\\Vector berechnungen\\Object Files\\Objects.txt");
+    private File autoSaveFilePath = new File("C:\\Users\\Justus\\Vector berechnungen\\Object Files\\Autosave.txt");
     private Data dataHandler;
     private Calculator calcHandler;
     public Formatter file;
@@ -31,11 +31,16 @@ class basic {
         }
     }
 
-    private void deleteAPoint() {
-        System.out.println("Which Point would you like to delete?");
+    private void deletePoints() {
+        System.out.println("Which points would you like to delete?");
         listPoints(true);
-        points.remove(sc.nextInt());
-        System.out.println();
+        while(sc.hasNextInt()) {
+            System.out.println(sc.nextInt());
+        }
+        /*while (sc.hasNext()) {
+            points.remove(sc.nextInt());
+        }
+        System.out.println("Points have been deleted.\n");*/
     }
     private void deleteAllPoints() {
         points.clear();
@@ -59,7 +64,7 @@ class basic {
         System.out.println("\n[2] Delete all points.");
         switch (sc.nextInt()){
             case 1:
-                deleteAPoint();
+                deletePoints();
                 break;
             case 2:
                 deleteAllPoints();
@@ -74,11 +79,10 @@ class basic {
     private void printMenu() {
         System.out.println("[1] Data Something");
         System.out.println("[2] List everything");
-        System.out.println("[3] Delete");
+        System.out.println("[3] Delete Object");
         System.out.println("[4] Calculations");
-        System.out.println("[5] Load Objects");
-        System.out.println("[6] Save Objects");
-        System.out.println("[7] Exit");
+        System.out.println("[5] Load or Save object file");
+        System.out.println("[6] Exit");
 
         switch (sc.nextInt()) {
             case 1:
@@ -87,7 +91,6 @@ class basic {
             case 2:
                 listPoints(false);
                 break;
-
             case 3:
                 deleteMenu();
                 break;
@@ -95,12 +98,9 @@ class basic {
                 calcHandler.calcMenu();
                 break;
             case 5:
-                dataHandler.readDataFromFile(objectsFilePath, true);
+                dataHandler.dataMenu();
                 break;
             case 6:
-                dataHandler.writeDataIntoFile(objectsFilePath);
-                break;
-            case 7:
                 dataHandler.writeDataIntoFile(autoSaveFilePath);
                 System.exit(0);
                 break;
