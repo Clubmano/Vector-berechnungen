@@ -1,8 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FilenameFilter;
-import java.lang.reflect.Array;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.Scanner;
@@ -73,7 +70,7 @@ class Data {
         File dir = new File(dirName);
         ArrayList<String>fileNames = new ArrayList<>();
         for (File file : dir.listFiles()) {
-            if (file.getName().endsWith((".txt"))) {
+            if (file.getName().endsWith((type))) {
                 fileNames.add(file.getName());
             }
         }
