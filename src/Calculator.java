@@ -18,7 +18,8 @@ class Calculator {
         System.out.println("Please select your calculation.");
         System.out.println("[1] Distance between two points");
         System.out.println("[2] Show relations between two points");
-        System.out.println("[3] Check if Points are on one line.");
+        System.out.println("[3] Check if points are on one line.");
+        System.out.println("[4] Add or subtract points..");
         switch (sc.nextInt()) {
             case 1:
                 pointSelection(2, 2);
@@ -34,6 +35,12 @@ class Calculator {
                 System.out.println("How many points do you wanna check?");
                 pointSelection(sc.nextInt(), 3);
                 pointsOnALine(index);
+                index.clear();
+                break;
+            case 4:
+                pointSelection(2,2);
+                System.out.println("How many times would you like to add or subtract the point?");
+                additionOfVector(index, sc.nextInt());
                 index.clear();
                 break;
         }
@@ -108,5 +115,11 @@ class Calculator {
                 + Math.pow((basic.points.get(points.get(0)).getpZ() - (basic.points.get(points.get(1)).getpZ())), 2));
 
         return distance;
+    }
+    private void additionOfVector (ArrayList<Integer> points, int factor){
+        basic.points.add(new Point((basic.points.get(points.get(0)).getpX() + (basic.points.get(points.get(1)).getpX()*factor)),
+                    (basic.points.get(points.get(0)).getpY() + (basic.points.get(points.get(1)).getpY()*factor)),
+                    (basic.points.get(points.get(0)).getpZ() + (basic.points.get(points.get(1)).getpZ()*factor)),
+                basic.points.get(0).getName()+ " ("+factor+basic.points.get(1).getName()+")"));
     }
 }

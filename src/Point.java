@@ -20,7 +20,6 @@ class Point {
         this.pZ = pZ;
         this.name = name;
     }
-
     private void setOrigin() {
         System.out.println("Please name your Object.");
         name = sc.next();
@@ -29,8 +28,20 @@ class Point {
         pX = sc.nextFloat();
         System.out.println("Y-value: ");
         pY = sc.nextFloat();
+
         System.out.println("Z-value: ");
         pZ = sc.nextFloat();
+    }
+    public void setpX(double pX) {
+        this.pX = pX;
+    }
+
+    public void setpY(double pY) {
+        this.pY = pY;
+    }
+
+    public void setpZ(double pZ) {
+        this.pZ = pZ;
     }
 
     public String getName() {
