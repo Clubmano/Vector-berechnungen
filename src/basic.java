@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Formatter;
@@ -6,33 +9,38 @@ import java.util.Scanner;
 /**
  * Created by Justus on 01.03.2017.
  */
-class basic {
+class basic{
+    private final Frame frame;
+    public Scanner fileReader;
+    public Formatter file;
     ArrayList<Point> points = new ArrayList<>();
     private Scanner sc = new Scanner(System.in);
-    public Scanner fileReader;
     private File autoSaveFilePath = new File("C:\\Users\\Justus\\Vector berechnungen\\Object Files\\Autosave.txt");
     private Data dataHandler;
     private Calculator calcHandler;
-    public Formatter file;
 
     public basic() {
         dataHandler = new Data(this);
         calcHandler = new Calculator(this);
+
+        frame = new Frame(this);
+        frame.setVisible(true);
+
         dataHandler.readDataFromFile(autoSaveFilePath, false);
-        start();
+        //start();
     }
 
-    private void start() {
+    /*private void start() {
         while (true) {
             printMenu();
 
         }
-    }
+    }*/
 
     private void deletePoints() {
         System.out.println("Which points would you like to delete?");
         listPoints(true);
-        while(sc.hasNextInt()) {
+        while (sc.hasNextInt()) {
             System.out.println(sc.nextInt());
         }
         /*while (sc.hasNext()) {
@@ -40,6 +48,7 @@ class basic {
         }
         System.out.println("Points have been deleted.\n");*/
     }
+
     private void deleteAllPoints() {
         points.clear();
     }
@@ -57,10 +66,11 @@ class basic {
         }
         System.out.println("\n");
     }
+
     private void deleteMenu() {
         System.out.println("\n[1] Delete one point.");
         System.out.println("\n[2] Delete all points.");
-        switch (sc.nextInt()){
+        switch (sc.nextInt()) {
             case 1:
                 deletePoints();
                 break;
@@ -70,12 +80,13 @@ class basic {
         }
 
     }
+
     public ArrayList<Point> getPoints() {
         return points;
     }
 
-    private void printMenu() {
-        System.out.println("[1] Data Something");
+   /* public void printMenu() {
+        *//*System.out.println("[1] Data Something");
         System.out.println("[2] List everything");
         System.out.println("[3] Delete Object");
         System.out.println("[4] Calculations");
@@ -104,8 +115,38 @@ class basic {
                 break;
 
 
-        }
+        }*//*
+        objects = new JButton("Objects");
+        objects.addActionListener(this);
+
+        calculations = new JButton("Calculations");
+        calculations.addActionListener(this);
+
+        saveOrLoad = new JButton("Save & Load");
+        saveOrLoad.addActionListener(this);
+
+        exit = new JButton("Exit");
+        exit.addActionListener(this);
+
+        frame.add(objects);
+        frame.add(calculations);
+        frame.add(saveOrLoad);
+        frame.add(exit);
+
+
     }
 
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == this.objects) {
+
+        } else if (e.getSource() == this.calculations) {
+
+        } else if (e.getSource() == this.saveOrLoad) {
+
+        } else if (e.getSource() == this.exit) {
+
+        }
+    }*/
 }
