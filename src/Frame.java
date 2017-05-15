@@ -75,15 +75,12 @@ public class Frame extends JFrame  implements ActionListener {
 
         addObjects = new JButton("addObjects");
         addObjects.addActionListener(this);
-        addObjects.setBounds(0,-500, 100,100);
 
         delObjects = new JButton("delObjects");
         delObjects.addActionListener(this);
-        delObjects.setBounds(100,-500, 100,100);
 
         back = new JButton("back");
         back.addActionListener(this);
-        back.setBounds(300,-500, 100,100);
 
         panel.add(addObjects);
         panel.add(delObjects);
