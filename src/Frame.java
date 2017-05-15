@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,19 +8,20 @@ import java.awt.event.ActionListener;
  */
 public class Frame extends JFrame  implements ActionListener {
     public JButton objects, calculations, saveOrLoad, exit, addObjects, delObjects, back;
-    public JLabel label;
-    public JPanel panel;
+    public JPanel menuPanel, standardMenuPanel, objectMenuPanel;
 
     public Frame(basic basic) {
         this.setTitle("Vector berechnungen");
         this.setSize(400, 600);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        menuPanel = new JPanel(new GridBagLayout());
+        this.add(menuPanel);
         printMenu();
 
 
     }
     public void printMenu() {
-        label = new JLabel();
-        panel = new JPanel();
+        standardMenuPanel = new JPanel();
 
         objects = new JButton("Objects");
         objects.addActionListener(this);
@@ -37,41 +39,47 @@ public class Frame extends JFrame  implements ActionListener {
         exit.addActionListener(this);
         exit.setBounds(300,-500, 100,100);
 
-        panel.add(objects);
-        panel.add(calculations);
-        panel.add(saveOrLoad);
-        panel.add(exit);
+        standardMenuPanel.add(objects);
+        standardMenuPanel.add(calculations);
+        standardMenuPanel.add(saveOrLoad);
+        standardMenuPanel.add(exit);
 
-        panel.add(label);
-        this.add(panel);
+        menuPanel.add(standardMenuPanel);
+
 
 
     }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == this.objects) {
+                menuPanel.remove(standardMenuPanel);
+                this.repaint();
+                objectMenu();
 
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == this.objects) {
-            objectMenu();
+            } else if (e.getSource() == this.calculations) {
 
-        } else if (e.getSource() == this.calculations) {
+            } else if (e.getSource() == this.saveOrLoad) {
 
-        } else if (e.getSource() == this.saveOrLoad) {
+            } else if (e.getSource() == this.exit) {
+                System.exit(0);
 
-        } else if (e.getSource() == this.exit) {
-            System.exit(0);
+            }
 
-        }
+            if (e.getSource() == this.addObjects) {
 
-        if (e.getSource()== this.addObjects){
+            } else if (e.getSource() == this.delObjects) {
 
-        }else if (e.getSource()== this.delObjects){
+            } else if (e.getSource() == this.back) {
+                menuPanel.remove(objectMenuPanel);
+                this.repaint();
+                printMenu();
+            }
 
-        }else if (e.getSource()== this.back){
-            printMenu();
-        }
+
+
     }
     public void objectMenu() {
-        label = new JLabel();
-        panel = new JPanel();
+        objectMenuPanel = new JPanel();
 
         addObjects = new JButton("addObjects");
         addObjects.addActionListener(this);
@@ -82,14 +90,12 @@ public class Frame extends JFrame  implements ActionListener {
         back = new JButton("back");
         back.addActionListener(this);
 
-        panel.add(addObjects);
-        panel.add(delObjects);
-        panel.add(back);
+        objectMenuPanel.add(addObjects);
+        objectMenuPanel.add(delObjects);
+        objectMenuPanel.add(back);
 
-        panel.add(label);
-        this.add(panel);
+        menuPanel.add(objectMenuPanel);
 
 
     }
-
 }
