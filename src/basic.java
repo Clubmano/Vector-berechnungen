@@ -1,6 +1,3 @@
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Formatter;
@@ -32,7 +29,7 @@ class basic{
 
     /*private void start() {
         while (true) {
-            printMenu();
+            standardMenu();
 
         }
     }*/
@@ -85,7 +82,7 @@ class basic{
         return points;
     }
 
-   /* public void printMenu() {
+   /* public void standardMenu() {
         *//*System.out.println("[1] Data Something");
         System.out.println("[2] List everything");
         System.out.println("[3] Delete Object");
